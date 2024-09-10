@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket Rankings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      color: #333;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #007bff;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background: #e2e8f0;
+      border-radius: 5px;
+      margin: 0 10px;
+      transition: background 0.3s ease;
+    }
+
+    .tab.active {
+      background: #007bff;
+      color: white;
+    }
+
+    .rankings {
+      display: none;
+    }
+
+    .rankings.active {
+      display: block;
+    }
+
+    .ranking-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .ranking-table th, .ranking-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .ranking-table th {
+      background-color: #f1f5f9;
+    }
+
+    .ranking-table tr:hover {
+      background-color: #f9fafb;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .tabs {
+        flex-direction: column;
+      }
+
+      .tab {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>Cricket Rankings</header>
+
+<div class="container">
+  <h2>Format Rankings</h2>
+
+  <div class="tabs">
+    <div class="tab active" data-target="test">Test Rankings</div>
+    <div class="tab" data-target="odi">ODI Rankings</div>
+    <div class="tab" data-target="t20">T20 Rankings</div>
+  </div>
+
+  <div id="test" class="rankings active">
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>India</td>
+          <td>123</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Australia</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>England</td>
+          <td>115</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="odi" class="rankings">
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>New Zealand</td>
+          <td>126</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>India</td>
+          <td>122</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Australia</td>
+          <td>119</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="t20" class="rankings">
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>England</td>
+          <td>130</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>India</td>
+          <td>125</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Pakistan</td>
+          <td>120</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>© 2024 Cricket Rankings</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const rankings = document.querySelectorAll('.rankings');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      tabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+
+      rankings.forEach(rank => rank.classList.remove('active'));
+      document.getElementById(this.getAttribute('data-target')).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
